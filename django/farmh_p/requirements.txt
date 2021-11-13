@@ -1,0 +1,12 @@
+backports.entry-points-selectable==1.1.0
+distlib==0.3.3
+Django==2.1.15
+filelock==3.3.0
+mysqlclient==2.0.3
+numpy==1.21.2
+opencv-python==4.5.3.56
+Pillow==8.3.2
+platformdirs==2.4.0
+pytz==2021.3
+six==1.16.0
+virtualenv==20.8.1
