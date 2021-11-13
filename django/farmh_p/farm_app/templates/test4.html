@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   
+    <form id="form1" method="POST" action="{% url 'test6' %}" enctype="multipart/form-data">   
+        {% csrf_token %}
+        <img src="{{imgdeepsave.deepimages.url}}" alt="">
+        {{imgdeepsave.deepimages.url}}
+    <input type="text" value="{{imgdeepsave.deepimages.url}}"name="imgsrc"> 
+</form>
+
+<script>
+    var body=document.getElementById("form1")
+    form1.submit()
+
+</script>
+</body>
+</html>

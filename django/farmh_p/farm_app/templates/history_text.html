@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+        .input_text{
+            width: 82%;
+            height: 25px;
+            padding: 5px 30px 5px 10px;
+            border: 2px solid #27ae5f;
+            border-radius: 4px;
+            outline: 0 none;
+        }
+            textarea{
+            border: 2px solid #27ae5f;
+            border-radius: 4px;
+        }
+        .text_btn{
+            border: 1px solid;
+            color: white;
+            border-radius: 4px;
+            transition-duration: 0.3s;
+            box-sizing: border-box;
+            width: 40%;
+            height: 60px;
+            margin-top: 4%;
+        }
+        #save{
+            background-color: #636e72;
+            margin-right: 3%;
+        }
+        #back{
+            background-color: #27ae5f;
+            margin-left: 3%;
+        }
+        td{
+            background-color: whitesmoke;
+        }
+    </style>
+</head>
+
+<body>
+    <div><h2 style="margin-bottom: 3%;">이력 작성하기</h2></div>
+    <hr style="margin-top: 1%;">
+    <form id="form1" method="POST" action="{% url 'save' %}" enctype="multipart/form-data">   
+            {% csrf_token %} 
+        <table>
+            <tr>
+                <td>작물명</td>
+                <td><input value="토마토" type="text"name="plant" class="input_text"></td>
+            </tr>
+            <tr>
+                <td>지역</td>
+                <td><input type="text" value="{{city}}" class="input_text" name="city"></td>
+            </tr>
+            <tr>
+                <td>날씨</td>
+                <td><input type="text" value="{{condition}}" class="input_text" name="condition"></td>
+            </tr>
+            <tr>
+                <td>기온(℃)</td>
+                <td><input type="text" value="{{temp}}" class="input_text" name="temp"></td>
+            </tr>
+            <tr>
+                <td>강수량(mm)</td>
+                <td><input type="text" value="{{precip_mm}}" class="input_text" name="precip_mm"></td>
+            </tr>
+            <tr>
+                <td>습도(％)</td>
+                <td><input type="text"class="input_text" value="{{humidity}}" name="humidity" ></td>
+            </tr>
+           
+            <tr>
+                <td>농약</td>
+                <td><input type="text" class="input_text" value={{textptc}} name="textptc"></td>
+            </tr>
+            <tr>
+                <td>비료</td>
+                <td><input type="text" class="input_text" name="tt"></td>
+            </tr>
+            <tr>
+            {% comment %} cols="30" rows="10" style="resize: none;" {% endcomment %}
+                <td>작업 내용</td>
+                <td><textarea name="content"class="input_text" style="height:150px" value={{textSST}} name="textSST">{{textSST}}</textarea></td>
+                    
+            </tr>
+        </table>
+        <div >
+            <input type="button" id="save" class="text_btn" value="뒤로가기"  onclick="historyback()">
+            <input type="button" id="back" class="text_btn" value="저장하기"  onclick="historysave()">
+        </div>
+    </form>
+
+    <script>
+    function historyback() {
+     
+    location.href="http://172.30.1.17:8000/history/"
+    
+    }
+    let form=document.getElementById("form1")
+    function historysave() {
+    form.submit()  
+    }
+    </script>
+</body>
+
+
+</html>

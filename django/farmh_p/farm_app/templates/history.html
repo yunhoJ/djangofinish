@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+   <style>
+        div {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .history_bg{
+            background: azure;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: auto;            
+        }
+        .history_bg>h2{
+            text-align: center;
+        }
+        .history_btn{
+            background: #27ae5f;
+            width: 80%;
+            display: inline-block;
+            height: 10%;
+            border-radius: 20px;
+            color: black;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 50px 0;
+            box-sizing: border-box;
+            transition: all ease 0.3s;
+            overflow: hidden;
+            margin-bottom: 10px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            text-decoration: none;
+            cursor: pointer;          
+        }
+        span{
+            color: white;
+        }
+
+        #fertilizer{
+            width: 100px;
+        }
+        #mic{
+            width: 100px;
+            height: 100px;
+        }
+        #check{
+            width: 100px;
+            height: 100px;
+        }
+   
+   </style>
+
+</head>
+
+<body>
+    <div class="history_bg" id="main">
+        <h2 title="이력관리">이력관리</h2>
+        <div class="history_inner">
+            <label for="fertilizer_cam">
+            <form id="form1" method="POST" action="{% url 'history_create' %}" enctype="multipart/form-data">   
+            {% csrf_token %} 
+                    <div class="history_btn">
+                    
+                        <img src="{%static "portfolio/fertilizer.png"%}" id="fertilizer"><br>
+                        <span>농약촬영</span>
+                        <input type="file" name="images" style="display: none;" id="fertilizer_cam" accept="image/*" capture="camera" />
+                     
+                    </div>
+            </form>
+            </label>
+           <label for="fertilizer_audio">
+            <form action="{% url 'history_audio' %}" method="POST" id="form2" enctype="multipart/form-data">
+                {% csrf_token %} 
+               <div class="history_btn">
+                    <img src="{%static "portfolio/mic.png"%}" id="mic">
+                    <br>
+                    <span>음성작성</span>
+                    <input type="file" name="audio" style="display:none" id="fertilizer_audio" accept="audio/*" capture/>
+                </div>
+            </form>
+            </label>
+            <a href={%url 'diary'%} class="history_btn">
+                <img src="{%static "portfolio/check.png"%}" id="check"><br>
+                <span>이력확인</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        {% comment %} const mymain=document.body
+        mymain.addEventListener("load",()=>{
+            alert("농약 저장이 없다면 농약 먼저 촬영해 주세요 ");
+        },{once:true}) {% endcomment %}
+
+        
+   
+            let form=document.getElementById("form1")
+        
+
+            document.getElementById("fertilizer_cam").addEventListener("change", function(){
+                    form.submit()
+            });
+            
+
+            let form2=document.getElementById("form2")
+            document.getElementById("fertilizer_audio").addEventListener("change", function(){
+                    form2.submit()
+            });
+            
+       
+    
+    </script>
+</body>
+
+</html>

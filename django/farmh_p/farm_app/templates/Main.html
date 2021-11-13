@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main</title>
+    <style>
+        div {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main_bg {
+            background: azure;
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow: auto;
+        }
+
+        .main_bg>h2 {
+            text-align: center;
+            margin-bottom: 0%;
+            margin-top: 0%;
+        }
+
+        .main_btn {
+            background: #27ae5f;
+            width: 80%;
+            display: inline-block;
+            height: 10%;
+            border-radius: 20px;
+            color: black;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+            padding: 50px 0;
+            box-sizing: border-box;
+            transition: all ease 0.3s;
+            overflow: hidden;
+            margin-bottom: 10px;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        
+
+        #fertilizer {
+            width: 100px;
+        }
+
+        #mic {
+            width: 100px;
+            height: 100px;
+        }
+
+        #check {
+            width: 100px;
+            height: 100px;
+        }
+        span{
+            color: white;
+        }
+        .main_img{
+            height: 100px; width: 100px; color: white; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main_bg">
+        <h2 title="farm_h"><img src="{%static "portfolio/mainimg.png"%}" style="width: 250px; height: 80px;"></h2>
+        <div class="main_inner">
+            <form id="form1" method="POST" action="{% url 'upload_create' %}" enctype="multipart/form-data">   
+            {% csrf_token %} 
+                <label for="cam">
+                <div class="main_btn">
+                    <img src="{%static "portfolio/smart_farm.png"%}" id="main_disease" class="main_img"><br>
+                    <span>병해충 판독</span>
+                <input  type="file" name="images" id="cam" class="upload-hidden" accept="image/*" capture="camera" style="display:none">
+                
+            </div>
+            </form>
+            </label>
+            <a href={%url 'history'%} class="main_btn">
+                <img src="{%static "portfolio/smart_farm2.png"%}" id="main_history" class="main_img"><br>
+                <span>이력관리</span>
+            </a>
+            <a href={%url 'drone'%} class="main_btn">
+                <img src="{%static "portfolio/smart_farm3.png"%}" id="main_drone" class="main_img"><br>
+                <span>드론 방제 신청</span>
+            </a>
+        </div>
+         
+    </div>
+    
+
+    <!-- <p>방식 1</p>
+    <input type="file" accept="image/*;capture=camera"/> -->
+
+    <script>
+    let form=document.getElementById("form1")
+       
+     document.getElementById("cam").addEventListener("change", function(){
+            form.submit()       
+            {% comment %} location.href="{%url 'analysis'%}" {% endcomment %}
+        });
+     {% comment %} function readImage(input) {
+    // 인풋 태그에 파일이 있는 경우
+    if(input.files && input.files[0]) {
+
+        // 이미지 파일인지 검사 (생략)
+
+        // FileReader 인스턴스 생성
+        const reader = new FileReader()
+
+        // 이미지가 로드가 된 경우
+        reader.onload = e => {
+
+            //const previewImage = document.getElementById("frame")
+            //previewImage.src = e.target.result
+            
+            console.log(e.target.result)
+          
+        }
+        
+        // reader가 이미지 읽도록 하기
+        reader.readAsDataURL(input.files[0])
+    }
+}
+
+// input file에 change 이벤트 부여
+const inputImage = document.getElementById("cam")
+inputImage.addEventListener("change", e => {
+    readImage(e.target)
+     
+}) {% endcomment %}
+
+        
+
+    </script>
+</body>
+
+</html>

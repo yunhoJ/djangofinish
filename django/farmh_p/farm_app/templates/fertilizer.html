@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            text-align: left;
+        }
+
+        .fertilizer_bg {
+            height: 100%;
+            width: 100%;
+        }
+
+        .fertilizer_btn {
+            position: absolute;
+            top: 80%;
+            left: 12%;
+            width: 80%;
+            height: 40pt;
+        }
+        .btn{
+            margin-left:10px;
+            border: 1px solid;
+            background-color: #27ae5f;
+            color: white;
+            border-radius: 4px;
+            transition-duration: 0.3s;
+            box-sizing: border-box;
+            width: 46%;
+            height: 85%;
+        }        
+        .btn:active {
+            background-color: cadetblue;
+        }
+        table{
+            border: 2px solid;
+            background-color: #b0dddad1;
+        }
+        td{
+            border: 2px solid;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fertilizer_bg">
+        <h2 style="text-align: center;">농약 정보</h2>
+        <div class="item_container">
+            <div>               
+                {%for i in spot%}
+                <table>                   
+                    <th class="disease_name" style="width: 50px; height: 40px;" colspan="2">
+                        {{i.ptc_plant}}_{{i.ptc_pest}}
+                    </th>
+                    <tr>
+                        <td style="width: 100px; height: 90px;" rowspan="4">
+                            <img src="/media/{{i.ptcimg}}" width="150px" height="150px">
+                        </td>
+                        <td style="width: 250px; height: 50px;">
+                            농약명 : {{i.ptc_name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50px; height: 50px;">제조사 : {{i.ptc_maker}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50px; height: 50px;">사용 용도 : {{i.ptc_use}}</td>
+                    </tr>
+                    <tr>
+                        <td style="width: 50px; height: 50px;"><input type="button" value="농약구매" class="btn"></td>
+                    </tr>
+                </table>
+                <br>
+                {%endfor%}
+            </div>
+            {% comment %} <div class="fertilizer_btn">
+                    <input type="button" value="농약구매" class="btn">
+                    <input type="button" value="뒤로가기" class="btn" onclick="self.close()">
+            </div> {% endcomment %}
+        </div>
+
+    </div>
+</body>
+
+</html>

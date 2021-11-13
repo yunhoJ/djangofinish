@@ -1,0 +1,267 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/locale/ko.js"></script>
+        <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+        <title>Document</title>
+        <style>
+            body{
+                font-style: inherit;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 5%;
+            }
+            th{
+                text-align: left;
+                font-size: 18px;
+            }
+            td{
+                padding: 5px;
+            }
+            .title{
+                width: 30%;
+            }
+            .info{
+                width: 70%;
+            }
+            .custom_calendar_table td {
+                text-align: center;
+            }
+
+            .custom_calendar_table thead.cal_date th {
+                font-size: 1.5rem;
+            }
+
+            .custom_calendar_table thead.cal_date th button {
+                font-size: 1.5rem;
+                background: none;
+                border: none;
+            }
+
+            .custom_calendar_table thead.cal_week th {
+                background-color: green;
+                color: #fff;
+            }
+
+            .custom_calendar_table tbody td {
+                cursor: pointer;
+            }
+
+            .custom_calendar_table tbody td:nth-child(1) {
+                color: red;
+            }
+
+            .custom_calendar_table tbody td:nth-child(7) {
+                color: #288CFF;
+            }
+
+            .custom_calendar_table tbody td.select_day {
+                background-color: #288CFF;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 달력추가 및 버튼 활성화 -->
+        <div id="calendarForm"></div>
+        <div id="diaryFrom">
+        <table id="diary_table">
+            {% comment %} <th colspan="2" id='plant'>작물명</th>
+            <tr>
+                <td class="title">날씨</td>
+                <td class="info">{{diary.weather}}</td>
+            </tr>
+            <tr>
+                <td class="title">최저 기온</td>
+                <td class="info">{{d_view.low_temp}}</td>
+            </tr>
+            <tr>
+                <td class="title">최고 기온</td>
+                <td class="info">{{d_view.high_temp}}</td>
+            </tr>
+            <tr>
+                <td class="title">습도</td>
+                <td class="info">{{d_view.hum}}</td>
+            </tr>
+            <tr>
+                <td class="title">병충해</td>
+                <td class="info">{{d_view.bug}}</td>
+            </tr>
+            <tr>
+                <td class="title">방제 정보</td>
+                <td class="info">{{d_view.dr_num}}</td>
+            </tr>
+            <tr>
+                <td class="title">농약</td>
+                <td class="info">{{d_view.ptc}}</td>
+            </tr>
+            <tr>
+                <td class="title">비료</td>
+                <td class="info">{{d_view.ftz}}</td>
+            </tr>
+            <tr>
+                <td class="title">작업내용</td>
+                <td class="info">{{d_view.diary}}</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src='{{d_view.pic}}' alt="저장 이미지" style="max-height: 400px; max-width: 350px;">
+                </td>
+            </tr> {% endcomment %}
+        </table>
+        </div>
+        <script >
+            (function () {
+                calendarMaker($("#calendarForm"), new Date());
+            })();
+
+            var nowDate = new Date();
+            function calendarMaker(target, date) {
+                if (date == null || date == undefined) {
+                    date = new Date();
+                }
+                nowDate = date;
+                if ($(target).length > 0) {
+                    var year = nowDate.getFullYear();
+                    var month = nowDate.getMonth() + 1;
+                    $(target).empty().append(assembly(year, month));
+                } else {
+                    console.error("custom_calendar Target is empty!!!");
+                    return;
+                }
+
+                var thisMonth = new Date(nowDate.getFullYear(), nowDate.getMonth(), 1);
+                var thisLastDay = new Date(nowDate.getFullYear(), nowDate.getMonth() + 1, 0);
+
+
+                var tag = "<tr>";
+                var cnt = 0;
+                //빈 공백 만들어주기
+                for (i = 0; i < thisMonth.getDay(); i++) {
+                    tag += "<td></td>";
+                    cnt++;
+                }
+
+                //날짜 채우기
+                for (i = 1; i <= thisLastDay.getDate(); i++) {
+                    if (cnt % 7 == 0) { tag += "<tr>"; }
+
+                    tag += "<td>" + i + "</td>";
+                    cnt++;
+                    if (cnt % 7 == 0) {
+                        tag += "</tr>";
+                    }
+                }
+                $(target).find("#custom_set_date").append(tag);
+                calMoveEvtFn();
+
+                function assembly(year, month) {
+                    var calendar_html_code =
+                        "<table class='custom_calendar_table'>" +
+                        "<colgroup>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "<col style='width:81px'/>" +
+                        "</colgroup>" +
+                        "<thead class='cal_date'>" +
+                        "<th><button type='button' class='prev'><</button></th>" +
+                        "<th colspan='5'><p><span>" + year + "</span>년 <span>" + month + "</span>월</p></th>" +
+                        "<th><button type='button' class='next'>></button></th>" +
+                        "</thead>" +
+                        "<thead  class='cal_week'>" +
+                        "<th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th>" +
+                        "</thead>" +
+                        "<tbody id='custom_set_date'>" +
+                        "</tbody>" +
+                        "</table>";
+                    return calendar_html_code;
+                }
+
+                function calMoveEvtFn() {
+                    //전달 클릭
+                    $(".custom_calendar_table").on("click", ".prev", function () {
+                        nowDate = new Date(nowDate.getFullYear(), nowDate.getMonth() - 1, nowDate.getDate());
+                        calendarMaker($(target), nowDate);
+                    });
+                    //다음날 클릭
+                    $(".custom_calendar_table").on("click", ".next", function () {
+                        nowDate = new Date(nowDate.getFullYear(), nowDate.getMonth() + 1, nowDate.getDate());
+                        calendarMaker($(target), nowDate);
+                    });
+                    //일자 선택 클릭
+                    $(".custom_calendar_table").on("click", "td", function () {
+                        $(".custom_calendar_table .select_day").removeClass("select_day");
+                        $(this).removeClass("select_day").addClass("select_day");
+                        console.log(typeof year)
+                        let a = $(this)
+                        console.log(a)
+                        let b = a.eq(0).text();
+                        console.log(typeof parseInt(b))
+                        var day = year + "-" + month + "-" + b;
+                        console.log(day)
+                        console.log(typeof day)
+
+                        $.ajax({
+                            
+                            type :"POST" ,
+                            url : "/farm_app/diary_view/",
+                            dataType: 'json',
+                            data: {'day' : day},
+                            success : function(data) {
+                                console.log(data);
+                                if (data != ""){
+                                    $('#diary_table').empty()
+                                    $('#diary_table').append(
+                                        `<table id="diary_table">
+                                            <th colspan="2">` + data[0].r_plant + `</th>
+                                            <tr><td class="title">날씨</td><td class="info">` + data[0].r_weather + `</td></tr>
+                                            <tr><td class="title">강수량</td><td class="info">` + data[0].r_low_c + `</td></tr>
+                                            <tr><td class="title">기온</td><td class="info">` + data[0].r_high_c + `</td></tr>
+                                            <tr><td class="title">습도</td><td class="info">` + data[0].r_hum + `</td></tr>
+                                            <tr><td class="title">병충해</td><td class="info">` + data[0].r_bug + `</td></tr>
+                                            <tr><td class="title">방제 정보</td><td class="info">` + data[0].r_dr_memo + `</td></tr>
+                                            <tr><td class="title">농약</td><td class="info">` + data[0].r_ptc_name + `</td></tr>
+                                            <tr><td class="title">비료</td><td class="info">` + data[0].r_ftz + `</td></tr>
+                                            <tr><td class="title">작업내용</td><td class="info">` + data[0].r_diary + `</td></tr>
+                                            <tr><td colspan="2"><img src="` + data[0].r_pic1 + `" alt="저장 이미지" style="max-height: 400px; max-width: 350px;"></td></tr>
+                                        </table>`
+                                    )}
+                                else{
+                                    $('#diary_table').empty()
+                                    $('#diary_table').append(
+                                        `<table id="diary_table">
+                                            <th colspan="2">작물명</th>
+                                            <tr><td class="title">날씨</td><td class="info"></td></tr>
+                                            <tr><td class="title">강수량</td><td class="info"></td></tr>
+                                            <tr><td class="title">기온</td><td class="info"></td></tr>
+                                            <tr><td class="title">습도</td><td class="info"></td></tr>
+                                            <tr><td class="title">병충해</td><td class="info"></td></tr>
+                                            <tr><td class="title">방제 정보</td><td class="info"></td></tr>
+                                            <tr><td class="title">농약</td><td class="info"></td></tr>
+                                            <tr><td class="title">비료</td><td class="info"></td></tr>
+                                            <tr><td class="title">작업내용</td><td class="info"></td></tr>
+                                            <tr><td colspan="2"><img src="" alt="저장 이미지" style="max-height: 400px; max-width: 350px;"></td></tr>
+                                        </table>`
+                                    )}
+                            },
+                            error:function(){
+                                }
+                        });
+                    });
+                }
+            }
+        </script>
+    </body>
+    </html>
