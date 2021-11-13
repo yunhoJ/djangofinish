@@ -1,0 +1,132 @@
+==> 2021-09-27 19:04:24 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py create -n DarkflowGPU python=3.6 pip
+# conda version: 4.10.1
++defaults/noarch::wheel-0.37.0-pyhd3eb1b0_1
++defaults/win-64::certifi-2021.5.30-py36haa95532_0
++defaults/win-64::pip-21.0.1-py36haa95532_0
++defaults/win-64::python-3.6.13-h3758d61_0
++defaults/win-64::setuptools-58.0.4-py36haa95532_0
++defaults/win-64::sqlite-3.36.0-h2bbff1b_0
++defaults/win-64::vc-14.2-h21ff451_1
++defaults/win-64::vs2015_runtime-14.27.29016-h5e58377_2
++defaults/win-64::wincertstore-0.2-py36h7fe50ca_0
+# update specs: ['python=3.6', 'pip']
+==> 2021-09-27 19:07:57 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install -c anaconda git
+# conda version: 4.10.1
+-defaults/win-64::certifi-2021.5.30-py36haa95532_0
++anaconda/win-64::certifi-2020.6.20-py36_0
++anaconda/win-64::git-2.23.0-h6bb4b03_0
+# update specs: ['git']
+==> 2021-09-27 21:09:58 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py update --all
+# conda version: 4.10.3
+-anaconda/win-64::certifi-2020.6.20-py36_0
+-anaconda/win-64::git-2.23.0-h6bb4b03_0
++defaults/win-64::certifi-2021.5.30-py36haa95532_0
++defaults/win-64::git-2.32.0-haa95532_1
+==> 2021-09-27 21:10:44 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install -c anaconda cudnn
+# conda version: 4.10.3
+-defaults/win-64::certifi-2021.5.30-py36haa95532_0
++anaconda/win-64::certifi-2020.6.20-py36_0
++anaconda/win-64::cudatoolkit-10.2.89-h74a9793_1
++anaconda/win-64::cudnn-7.6.5-cuda10.2_0
+# update specs: ['cudnn']
+==> 2021-09-27 21:16:54 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py remove --force cudnn
+# conda version: 4.10.3
+-anaconda/win-64::cudnn-7.6.5-cuda10.2_0
+# remove specs: ['cudnn']
+==> 2021-09-27 21:17:19 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py remove --force cudatoolkit
+# conda version: 4.10.3
+-anaconda/win-64::cudatoolkit-10.2.89-h74a9793_1
+# remove specs: ['cudatoolkit']
+==> 2021-09-27 21:36:16 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install -c anaconda cudnn
+# conda version: 4.10.3
+-defaults/win-64::pip-21.0.1-py36haa95532_0
++anaconda/win-64::cudatoolkit-10.2.89-h74a9793_1
++anaconda/win-64::cudnn-7.6.5-cuda10.2_0
++anaconda/win-64::pip-20.2.4-py36_0
+# update specs: ['cudnn']
+==> 2021-09-30 15:42:46 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install --yes --json --force-pscheck --prefix C:\Users\smhrd\Anaconda3\envs\DarkflowGPU notebook
+# conda version: 4.10.3
+-anaconda/win-64::certifi-2020.6.20-py36_0
++defaults/noarch::attrs-21.2.0-pyhd3eb1b0_0
++defaults/noarch::backcall-0.2.0-pyhd3eb1b0_0
++defaults/noarch::bleach-4.0.0-pyhd3eb1b0_0
++defaults/noarch::colorama-0.4.4-pyhd3eb1b0_0
++defaults/noarch::decorator-5.0.9-pyhd3eb1b0_0
++defaults/noarch::defusedxml-0.7.1-pyhd3eb1b0_0
++defaults/noarch::importlib_metadata-4.8.1-hd3eb1b0_0
++defaults/noarch::ipython_genutils-0.2.0-pyhd3eb1b0_1
++defaults/noarch::jinja2-3.0.1-pyhd3eb1b0_0
++defaults/noarch::jsonschema-3.2.0-pyhd3eb1b0_2
++defaults/noarch::jupyter_client-7.0.1-pyhd3eb1b0_0
++defaults/noarch::jupyterlab_pygments-0.1.2-py_0
++defaults/noarch::nbclient-0.5.3-pyhd3eb1b0_0
++defaults/noarch::nbformat-5.1.3-pyhd3eb1b0_0
++defaults/noarch::nest-asyncio-1.5.1-pyhd3eb1b0_0
++defaults/noarch::packaging-21.0-pyhd3eb1b0_0
++defaults/noarch::parso-0.8.2-pyhd3eb1b0_0
++defaults/noarch::pickleshare-0.7.5-pyhd3eb1b0_1003
++defaults/noarch::prometheus_client-0.11.0-pyhd3eb1b0_0
++defaults/noarch::prompt-toolkit-3.0.17-pyhca03da5_0
++defaults/noarch::pycparser-2.20-py_2
++defaults/noarch::pygments-2.10.0-pyhd3eb1b0_0
++defaults/noarch::pyparsing-2.4.7-pyhd3eb1b0_0
++defaults/noarch::python-dateutil-2.8.2-pyhd3eb1b0_0
++defaults/noarch::send2trash-1.8.0-pyhd3eb1b0_1
++defaults/noarch::six-1.16.0-pyhd3eb1b0_0
++defaults/noarch::testpath-0.5.0-pyhd3eb1b0_0
++defaults/noarch::typing_extensions-3.10.0.2-pyh06a4308_0
++defaults/noarch::wcwidth-0.2.5-pyhd3eb1b0_0
++defaults/noarch::zipp-3.5.0-pyhd3eb1b0_0
++defaults/win-64::argon2-cffi-20.1.0-py36h2bbff1b_1
++defaults/win-64::async_generator-1.10-py36h28b3542_0
++defaults/win-64::certifi-2021.5.30-py36haa95532_0
++defaults/win-64::cffi-1.14.6-py36h2bbff1b_0
++defaults/win-64::entrypoints-0.3-py36_0
++defaults/win-64::importlib-metadata-4.8.1-py36haa95532_0
++defaults/win-64::ipykernel-5.3.4-py36h5ca1d4c_0
++defaults/win-64::ipython-7.16.1-py36h5ca1d4c_0
++defaults/win-64::jedi-0.17.0-py36_0
++defaults/win-64::jupyter_core-4.7.1-py36haa95532_0
++defaults/win-64::m2w64-gcc-libgfortran-5.3.0-6
++defaults/win-64::m2w64-gcc-libs-5.3.0-7
++defaults/win-64::m2w64-gcc-libs-core-5.3.0-7
++defaults/win-64::m2w64-gmp-6.1.0-2
++defaults/win-64::m2w64-libwinpthread-git-5.0.0.4634.697f757-2
++defaults/win-64::markupsafe-2.0.1-py36h2bbff1b_0
++defaults/win-64::mistune-0.8.4-py36he774522_0
++defaults/win-64::msys2-conda-epoch-20160418-1
++defaults/win-64::nbconvert-6.0.7-py36_0
++defaults/win-64::notebook-6.4.3-py36haa95532_0
++defaults/win-64::pandoc-2.12-haa95532_0
++defaults/win-64::pandocfilters-1.4.3-py36haa95532_1
++defaults/win-64::pyrsistent-0.17.3-py36he774522_0
++defaults/win-64::pywin32-228-py36hbaba5e8_1
++defaults/win-64::pywinpty-0.5.7-py36_0
++defaults/win-64::pyzmq-22.2.1-py36hd77b12b_1
++defaults/win-64::terminado-0.9.4-py36haa95532_0
++defaults/win-64::tornado-6.1-py36h2bbff1b_0
++defaults/win-64::traitlets-4.3.3-py36haa95532_0
++defaults/win-64::webencodings-0.5.1-py36_1
++defaults/win-64::winpty-0.4.3-4
+# update specs: ['notebook']
+==> 2021-09-30 16:15:58 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install --yes --json --force-pscheck --prefix C:\Users\smhrd\Anaconda3\envs\DarkflowGPU console_shortcut
+# conda version: 4.10.3
++defaults/win-64::console_shortcut-0.1.1-4
+# update specs: ['console_shortcut']
+==> 2021-09-30 16:24:38 <==
+# cmd: C:\Users\smhrd\Anaconda3\Scripts\conda-script.py install cudnn==7.6.0
+# conda version: 4.10.3
+-anaconda/win-64::cudatoolkit-10.2.89-h74a9793_1
+-anaconda/win-64::cudnn-7.6.5-cuda10.2_0
++defaults/win-64::cudatoolkit-10.1.243-h74a9793_0
++defaults/win-64::cudnn-7.6.0-cuda10.1_0
+# update specs: ['cudnn==7.6.0']

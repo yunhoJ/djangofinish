@@ -1,0 +1,62 @@
+{
+  "build": "cuda10.1_0",
+  "build_number": 0,
+  "channel": "https://repo.anaconda.com/pkgs/main/win-64",
+  "constrains": [],
+  "depends": [
+    "cudatoolkit >=10.1,<10.2"
+  ],
+  "extracted_package_dir": "C:\\Users\\smhrd\\Anaconda3\\pkgs\\cudnn-7.6.0-cuda10.1_0",
+  "features": "",
+  "files": [
+    "Library/bin/cudnn64_7.dll",
+    "Library/include/cudnn.h",
+    "Library/lib/x64/cudnn.lib",
+    ".nonadmin"
+  ],
+  "fn": "cudnn-7.6.0-cuda10.1_0.conda",
+  "legacy_bz2_md5": "8e7382ddc3c64a7ff657bc0b52df15e1",
+  "legacy_bz2_size": 252006179,
+  "license": "Proprietary",
+  "link": {
+    "source": "C:\\Users\\smhrd\\Anaconda3\\pkgs\\cudnn-7.6.0-cuda10.1_0",
+    "type": 1
+  },
+  "md5": "816d25e21ea5b230d17355d208de5094",
+  "name": "cudnn",
+  "package_tarball_full_path": "C:\\Users\\smhrd\\Anaconda3\\pkgs\\cudnn-7.6.0-cuda10.1_0.conda",
+  "paths_data": {
+    "paths": [
+      {
+        "_path": "Library/bin/cudnn64_7.dll",
+        "path_type": "hardlink",
+        "sha256": "fcb6b04869a7ea0eeddc4b63f3708806b8b62a8a3384ee4cb0ad38eaec251ffc",
+        "sha256_in_prefix": "fcb6b04869a7ea0eeddc4b63f3708806b8b62a8a3384ee4cb0ad38eaec251ffc",
+        "size_in_bytes": 412253696
+      },
+      {
+        "_path": "Library/include/cudnn.h",
+        "path_type": "hardlink",
+        "sha256": "992bf312d5f1c9fc56fed8c1811bfcbc8ece9205e765dff184eb006a36eff050",
+        "sha256_in_prefix": "992bf312d5f1c9fc56fed8c1811bfcbc8ece9205e765dff184eb006a36eff050",
+        "size_in_bytes": 134145
+      },
+      {
+        "_path": "Library/lib/x64/cudnn.lib",
+        "path_type": "hardlink",
+        "sha256": "d3e0a09c75636a99f4325bfb9d66cb9a3e1bf4262322348eace84b4bad9d844b",
+        "sha256_in_prefix": "d3e0a09c75636a99f4325bfb9d66cb9a3e1bf4262322348eace84b4bad9d844b",
+        "size_in_bytes": 64896
+      }
+    ],
+    "paths_version": 1
+  },
+  "requested_spec": "cudnn==7.6.0",
+  "sha256": "ba1b9cb8521789232ed4c357692df4265d7edbc052209e494ec4d6fca09fde0a",
+  "size": 181856557,
+  "subdir": "win-64",
+  "timestamp": 1559586547648,
+  "track_features": "",
+  "url": "https://repo.anaconda.com/pkgs/main/win-64/cudnn-7.6.0-cuda10.1_0.conda",
+  "version": "7.6.0"
+}
